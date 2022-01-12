@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
     selector: 'app-counter',
@@ -8,11 +8,14 @@ import { Component} from '@angular/core';
 export class CounterComponent {
     counter = 0;
 
+    @Output() counterEmitter = new EventEmitter<number>();
+
     increment() {
-        this.counter++;
+        this.counter++
+        this.counterEmitter.emit(this.counter);
     }
 
     decrement() {
-        this.counter--;
+        this.counter--
     }
 }
